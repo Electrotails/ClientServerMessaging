@@ -30,9 +30,11 @@ public class ServerPrincipal {
 	}
 	
 	public static void printMsg(String user, String msg){
-		System.out.print("DEBUG: " + user + " disse: " + msg);
-		for(ServerMsgListener client : clients){
-			client.sendMsg(user + " disse:" + msg);
+		System.out.println("DEBUG: " + user + " disse: " + msg);
+		for(ServerMsgListener client : clients) {
+			if(client.getUser() != user) {
+				client.sendMsg(user + " disse: " + msg);		
+			}
 		}
 	}
 }

@@ -23,13 +23,12 @@ public class ClientPrincipal {
 			out = new DataOutputStream(clientSocket.getOutputStream());
 			new Thread(new ClientMsgListener
 					(new DataInputStream(clientSocket.getInputStream()))).start();;
-			
+			System.out.println("Conectado!");
 			while(true){
 				msg = sc.nextLine();
-				System.out.print(clientSocket.getLocalAddress() + ": " + msg);
+				System.out.println("Você disse: " + msg);
 				out.writeUTF(msg);
 			}
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

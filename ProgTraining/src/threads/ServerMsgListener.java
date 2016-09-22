@@ -28,7 +28,8 @@ public class ServerMsgListener implements Runnable {
 			try {
 				ServerPrincipal.printMsg(user, in.readUTF());
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.out.println(user + " desconectou!");
+				break;
 			}
 		}
 	}
@@ -39,5 +40,13 @@ public class ServerMsgListener implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 }
